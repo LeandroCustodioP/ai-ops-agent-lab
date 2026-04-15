@@ -1,0 +1,29 @@
+version: "1.0.0"
+agent_name: "Bussola_Pipeline_Doctor"
+
+# Definição do que o agente deve buscar no log
+analysis_rules:
+  critical_patterns:
+    - "Traceback"
+    - "Error:"
+    - "Exception:"
+    - "FAILED"
+
+# O Contrato de Saída (Output)
+# Isso garante que o seu "pipeline de teste" consiga ler a resposta da IA
+output_schema:
+  type: "object"
+  required: ["category", "root_cause", "fix_suggestion", "severity"]
+  properties:
+    category:
+      type: "string"
+      enum: ["Infrastructure", "Database", "Code", "Permission"]
+    root_cause:
+      type: "string"
+      description: "Explicação técnica curta do que causou a falha."
+    fix_suggestion:
+      type: "string"
+      description: "O comando ou código exato para resolver o problema."
+    severity:
+      type: "string"
+      enum: ["Low", "Medium", "High", "Critical"]

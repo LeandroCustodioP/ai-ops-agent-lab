@@ -1,0 +1,55 @@
+# ai-ops-agent-lab/.gitignore
+
+# --- Credenciais e Segredos (CRÍTICO) ---
+.env
+*.env
+credentials.json
+
+# --- Ambientes Virtuais ---
+.venv/
+venv/
+env/
+bin/
+lib/
+lib64/
+share/
+pyvenv.cfg
+
+# --- Python ---
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# --- VS Code ---
+.vscode/
+*.code-workspace
+.history/
+
+# --- Logs e Dados Temporários ---
+# Se quiser subir seus mocks de teste, NÃO ignore a pasta data/
+# Mas ignore logs gerados em tempo de execução se existirem
+*.log
+
+# --- OS (Ubuntu/Linux) ---
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
