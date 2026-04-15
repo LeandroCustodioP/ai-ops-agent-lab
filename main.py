@@ -1,8 +1,14 @@
 # ai-ops-agent-lab/main.py
+import sys  # Adicionamos o sys para ler os argumentos do terminal
 from src.agent_brain import run_diagnosis
 
 def main():
-    log_path = "data/mock_error.log"
+    # Se você digitar algo após o comando, ex: python3 main.py data/novo_erro.log
+    # o sys.argv[1] será "data/novo_erro.log". Caso contrário, usa o padrão.
+    if len(sys.argv) > 1:
+        log_path = sys.argv[1]
+    else:
+        log_path = "data/mock_error.log"
     
     print(f"🚀 Iniciando diagnóstico para: {log_path}\n")
     
@@ -13,7 +19,7 @@ def main():
         # Chama o cérebro do agente
         result = run_diagnosis(log_content)
         
-        # Exibição bonitona do resultado
+        # Exibição bonitona do resultado (Mantida exatamente como a sua)
         print("✅ Diagnóstico Concluído:")
         print("-" * 30)
         print(f"CATEGORIA: {result['category']}")
@@ -27,7 +33,7 @@ def main():
             print(f"   📊 Confiança: {hypo['confidence_score'] * 100}%")
             
     except FileNotFoundError:
-        print("❌ Erro: Arquivo de log não encontrado.")
+        print(f"❌ Erro: Arquivo '{log_path}' não encontrado.")
     except Exception as e:
         print(f"❌ Ocorreu um erro inesperado: {e}")
 
